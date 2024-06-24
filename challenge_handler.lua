@@ -79,9 +79,9 @@ end)
 function ChallengeMod.localizeChalNames()
   for i, v in ipairs(CustomChallenges) do
     table.insert(v.DATA.rules.custom, {id="cm_credit", value=v.DESIGNER})
-    print(inspectDepth(v))
     G.localization.misc.challenge_names[v.DATA.id] = v.DATA.name
   end
+  G.localization.misc.v_text.ch_c_cm_credit = { "Designed by: {C:green}#1#{}" }
 end
 
 for i, v in pairs(CustomChallenges) do
