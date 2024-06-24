@@ -22,14 +22,17 @@ overwrite = false
 [patches.copy]
 target = "main.lua"
 position = "append"
-sources = ["mod.lua"]
+sources = ["core.lua"]
 
 [[patches]]
 [patches.pattern]
 target = "functions/misc_functions.lua"
 pattern = "function init_localization()"
 position = "after"
-payload = 'ChallengeMod.addLocalization()'
+payload = '''
+ChallengeMod.localizeChalNames()
+ChallengeMod.localizeMechDescriptions()
+'''
 match_indent = true
 overwrite = false
 

@@ -1,13 +1,14 @@
-return {
-    name = "Anapodaphobia",
-    id = "c_mod_facedown_1",
+local Challenge = {}
+Challenge.NAME = "Anapodaphobia"
+Challenge.DESIGNER = "Djynasty + Cheerio1101"
+Challenge.DATE_CREATED = 240618 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
     rules = {
       custom = {
         { id = "cm_all_facedown" },
-        {
-          id = "cm_credit",
-          value = "Djynasty + Cheerio1101",
-        },
       },
       modifiers = {},
     },
@@ -23,3 +24,5 @@ return {
       banned_other = {},
     },
   }
+
+  return Challenge

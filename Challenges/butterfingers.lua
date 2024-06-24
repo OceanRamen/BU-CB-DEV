@@ -1,12 +1,13 @@
-return {
-  name = "Butterfingers",
-  id = "c_mod_butterfingers",
+local Challenge = {}
+Challenge.NAME = "Butterfingers"
+Challenge.DESIGNER = "sharktamer"
+Challenge.DATE_CREATED = 240615 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
-      {
-        id = "cm_credit",
-        value = "sharktamer",
-      },
     },
     modifiers = {
       { id = "hand_size", value = 0 },
@@ -93,3 +94,5 @@ return {
     },
   },
 }
+
+return Challenge

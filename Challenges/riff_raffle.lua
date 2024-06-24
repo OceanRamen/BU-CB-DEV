@@ -1,6 +1,11 @@
-return {
-  name = "Riff-Raffle",
-  id = "c_mod_riffraff_1",
+local Challenge = {}
+Challenge.NAME = "Riff-Raffle"
+Challenge.DESIGNER = "UppedHealer8521"
+Challenge.DATE_CREATED = 240607 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       {
@@ -14,10 +19,6 @@ return {
       },
       {
         id = "no_shop_jokers",
-      },
-      {
-        id = "cm_credit",
-        value = "UppedHealer8521",
       },
     },
     modifiers = {
@@ -130,3 +131,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge

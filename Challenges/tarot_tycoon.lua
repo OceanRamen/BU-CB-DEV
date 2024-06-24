@@ -1,14 +1,15 @@
-return {
-  name = "Tarot Tycoon",
-  id = "c_mod_tarot_tycoon_1",
+local Challenge = {}
+Challenge.NAME = "Tarot Tycoon"
+Challenge.DESIGNER = "Djynasty"
+Challenge.DATE_CREATED = 240607 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "no_shop_jokers" },
       { id = "no_shop_planets" },
-      {
-        id = "cm_credit",
-        value = "Djynasty",
-      },
     },
     modifiers = {},
   },
@@ -77,3 +78,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge

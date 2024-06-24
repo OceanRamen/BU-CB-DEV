@@ -1,6 +1,11 @@
-return {
-  name = "Swapped Pockets",
-  id = "c_mod_swapped_pockets_1",
+local Challenge = {}
+Challenge.NAME = "Swapped Pockets"
+Challenge.DESIGNER = "CampfireCollective"
+Challenge.DATE_CREATED = 240608 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     modifiers = {
       {
@@ -25,10 +30,6 @@ return {
       },
     },
     custom = {
-      {
-        id = "cm_credit",
-        value = "CampfireCollective",
-      },
     },
   },
   jokers = {},
@@ -48,3 +49,5 @@ return {
   },
   restrictions = {},
 }
+
+return Challenge

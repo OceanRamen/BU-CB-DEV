@@ -1,13 +1,14 @@
-return {
-  name = "Pay As You Go",
-  id = "c_mod_payasyougo_1",
+local Challenge = {}
+Challenge.NAME = "Pay-As-You-Go"
+Challenge.DESIGNER = "theQial"
+Challenge.DATE_CREATED = 240612 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "all_rental" },
-      {
-        id = "cm_credit",
-        value = "theQial",
-      },
     },
     modifiers = {
       { id = "dollars", value = 15 },

@@ -1,14 +1,15 @@
-return {
-  name = "Oops, All Sixes!",
-  id = "c_mod_sixes_1",
+local Challenge = {}
+Challenge.NAME = "Oops! All Sixes!"
+Challenge.DESIGNER = "Cheerio1101"
+Challenge.DATE_CREATED = 240617 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "cm_noshop"},
       { id = "no_reward_specific", value = "Small"},
-      {
-        id = "cm_credit",
-        value = "Cheerio1101",
-      },
     },
     modifiers = {
       { id = "discards", value = 2 },
@@ -121,3 +122,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge

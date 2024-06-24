@@ -1,15 +1,16 @@
-return {
-  name = "Load Bearing",
-  id = "c_mod_load_bearing_1",
+local Challenge = {}
+Challenge.NAME = "Load Bearing"
+Challenge.DESIGNER = "sharktamer"
+Challenge.DATE_CREATED = 240610 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       {
         id = "cm_force_hand",
         value = "Straight",
-      },
-      {
-        id = "cm_credit",
-        value = "sharktamer",
       },
     },
   },
@@ -109,3 +110,5 @@ return {
     },
   },
 }
+
+return Challenge

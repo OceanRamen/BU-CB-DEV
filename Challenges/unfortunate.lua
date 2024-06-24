@@ -1,14 +1,15 @@
-return {
-  name = "Unfortunate",
-  id = "c_mod_unfortunate_1",
+local Challenge = {}
+Challenge.NAME = "Tarot Torture"
+Challenge.DESIGNER = "DrSpectred"
+Challenge.DATE_CREATED = 240607 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "no_shop_jokers" },
       { id = "no_shop_planets" },
-      {
-        id = "cm_credit",
-        value = "DrSpectred",
-      },
     },
     modifiers = {
       { id = "discards", value = 1 },
@@ -57,3 +58,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge

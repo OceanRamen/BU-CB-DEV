@@ -1,16 +1,17 @@
-return {
-  name = "Student Loan Debt",
-  id = "c_mod_student_loan_debt_1",
+local Challenge = {}
+Challenge.NAME = "Student Loan Debt"
+Challenge.DESIGNER = "CampfireCollective"
+Challenge.DATE_CREATED = 240610 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "no_reward" },
       { id = "no_extra_hand_money" },
       { id = "no_interest" },
       { id = "cm_negative_interest" },
-      {
-        id = "cm_credit",
-        value = "CampfireCollective",
-      },
     },
     modifiers = {
       { id = "dollars", value = 15 },
@@ -24,3 +25,5 @@ return {
     type = "Challenge Deck",
   },
 }
+
+return Challenge

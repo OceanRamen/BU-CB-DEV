@@ -1,12 +1,13 @@
-return {
-  name = "Certified Gambler",
-  id = "c_mod_certified_gambler_1",
+local Challenge = {}
+Challenge.NAME = "Certified Gambler"
+Challenge.DESIGNER = "CampfireCollective"
+Challenge.DATE_CREATED = 240616 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
-      {
-        id = "cm_credit",
-        value = "CampfireCollective",
-      },
     },
   },
   jokers = {
@@ -27,3 +28,5 @@ return {
     type = "Challenge Deck",
   },
 }
+
+return Challenge

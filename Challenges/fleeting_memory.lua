@@ -1,13 +1,14 @@
-return {
-  name = "Fleeting Memory",
-  id = "c_mod_fleeting_1",
+local Challenge = {}
+Challenge.NAME = "Fleeting Memory"
+Challenge.DESIGNER = "Djynasty"
+Challenge.DATE_CREATED = 240607 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "all_perishable" },
-      {
-        id = "cm_credit",
-        value = "Djynasty",
-      },
     },
     modifiers = {},
   },
@@ -23,3 +24,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge

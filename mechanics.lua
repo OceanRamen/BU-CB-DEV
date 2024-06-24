@@ -1,34 +1,8 @@
 local lovely = require("lovely")
 local nativefs = require("nativefs")
 
-local function get_chal_files(directory)
-  local files = {}
-  local items = nativefs.getDirectoryItems(directory)
-  for _, item in ipairs(items) do
-    if item:match("%.lua$") then
-      table.insert(files, item)
-    end
-  end
-  return files
-end
-
-local directory = lovely.mod_dir .. "/ChallengeMod/Challenges/"
-
-local lua_files = get_chal_files(directory)
-
-local CustomChallenges = {}
-
-for _, file in ipairs(lua_files) do
-  local file_path = directory .. "/" .. file
-  table.insert(CustomChallenges, dofile(file_path))
-end
-
-function ChallengeMod.addLocalization()
-  for i, v in ipairs(CustomChallenges) do
-    G.localization.misc.challenge_names[v.id] = v.name
-  end
-
-  --  Challenge Descriptions
+function ChallengeMod.localizeMechDescriptions()
+  --  Custom Mechanic Descriptions
   G.localization.misc.v_text.ch_c_all_perishable = { "All Jokers are {C:attention}Perishable{}" }
   G.localization.misc.v_text.ch_c_all_rental = { "All Jokers are {C:attention}Rental{}" }
   G.localization.misc.v_text.ch_c_cm_force_hand = { "Played hands must contain a {C:blue}#1#{}" }
@@ -41,7 +15,7 @@ function ChallengeMod.addLocalization()
   G.localization.misc.v_text.ch_c_cm_scaling_manual = { "Custom ante and blind scaling" }
   G.localization.misc.v_text.ch_c_cm_noshop = { "{C:attention}No Shop" }
   G.localization.misc.v_text.ch_c_cm_hand_kills = { "Lose the game if played hand contains a {C:blue}#1#{}" }
-  G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down"}
+  G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down" }
   --  Credit Tags
   G.localization.misc.v_text.ch_c_cm_credit = { "Concept by: {C:green}#1#{}" }
 end
@@ -160,6 +134,3 @@ function Blind:defeat(silent)
   end
 end
 
-for i, v in pairs(CustomChallenges) do
-  table.insert(G.CHALLENGES, #G.CHALLENGES + 1, v)
-end

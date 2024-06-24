@@ -1,6 +1,11 @@
-return {
-  name = "Even Golder Stake",
-  id = "c_mod_evengolderstake_1",
+local Challenge = {}
+Challenge.NAME = "Golder-Stake"
+Challenge.DESIGNER = "Djynasty"
+Challenge.DATE_CREATED = 240614 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       {
@@ -23,11 +28,11 @@ return {
     },
     modifiers = {
       { id = "discards", value = 2 },
-      { id = "hands", value = 3 },
-      { id = "hand_size", value = 7 },
     },
   },
   deck = {
     type = "Abandoned Deck",
   },
 }
+
+return Challenge

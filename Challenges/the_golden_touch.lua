@@ -58,9 +58,14 @@ for _, v in ipairs(joker_names) do
   table.insert(banned_cards, { id = v })
 end
 
-return {
-  name = "The Golden Touch",
-  id = "c_mod_the_golden_touch_1",
+local Challenge = {}
+Challenge.NAME = "The Golden Touch"
+Challenge.DESIGNER = "sharktamer"
+Challenge.DATE_CREATED = 240616 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     modifiers = {
       { id = "dollars", value = 0 },
@@ -77,10 +82,6 @@ return {
       },
       { id = "minus_hand_size_per_X_dollar", value = "1.50" },
       -- { id = "inflation" },
-      {
-        id = "cm_credit",
-        value = "sharktamer",
-      },
     },
   },
   jokers = {},
@@ -167,3 +168,5 @@ return {
     },
   },
 }
+
+return Challenge

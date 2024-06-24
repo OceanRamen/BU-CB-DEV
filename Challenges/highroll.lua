@@ -1,12 +1,13 @@
-return {
-  name = "Highroll",
-  id = "c_mod_highroll_1",
+local Challenge = {}
+Challenge.NAME = "Highroll"
+Challenge.DESIGNER = "Cheerio1101"
+Challenge.DATE_CREATED = 240614 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
-      {
-        id = "cm_credit",
-        value = "Cheerio1101",
-      },
     },
     modifiers = { {
       id = "reroll_cost",
@@ -30,3 +31,4 @@ return {
     banned_other = {},
   },
 }
+return Challenge

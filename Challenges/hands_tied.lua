@@ -1,15 +1,16 @@
-return {
-  name = "Hands Tied",
-  id = "c_mod_hands_tied_1",
+local Challenge = {}
+Challenge.NAME = "Hands Tied"
+Challenge.DESIGNER = "Wingcap"
+Challenge.DATE_CREATED = 240617 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       {
         id = "cm_hand_kills",
         value = "Straight",
-      },
-      {
-        id = "cm_credit",
-        value = "Wingcap",
       },
     },
     modifiers = {
@@ -35,3 +36,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge
