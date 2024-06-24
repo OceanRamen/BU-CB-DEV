@@ -1,13 +1,14 @@
-return {
-  name = "Wildin'",
-  id = "c_mod_wild_1",
+local Challenge = {}
+Challenge.NAME = "Wildin'"
+Challenge.DESIGNER = "Tuzzo"
+Challenge.DATE_CREATED = 240624 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = 'cm_wildin' },
-      {
-        id = "cm_credit",
-        value = "Tuzzo",
-      },
     },
     modifiers = {},
   },
@@ -242,3 +243,5 @@ return {
     },
   },
 }
+
+return Challenge

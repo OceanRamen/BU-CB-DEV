@@ -1,6 +1,11 @@
-return {
-  name = "Garbage Stake",
-  id = "c_mod_garbage_1",
+local Challenge = {}
+Challenge.NAME = "Garbage Stake"
+Challenge.DESIGNER = "Cheerio1101"
+Challenge.DATE_CREATED = 240624 -- Y/M/D
+Challenge.VERSION = "1.0.0"
+Challenge.DATA = {
+  name = Challenge.NAME,
+  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "all_perishable" },
@@ -9,10 +14,6 @@ return {
       { id = "cm_hand_kills", value = "Straight" },
       { id = "no_interest" },
       { id = "cm_soul_luck", value = "0.8" },
-      {
-        id = "cm_credit",
-        value = "Cheerio1101",
-      },
     },
     modifiers = {
       { id = "reroll_cost", value = 10 },
@@ -45,3 +46,5 @@ return {
     banned_other = {},
   },
 }
+
+return Challenge
