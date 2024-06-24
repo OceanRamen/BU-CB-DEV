@@ -84,6 +84,8 @@ elseif v.id == 'no_shop_tarots' then
   self.GAME.tarot_rate = 0
 elseif v.id == 'cm_all_facedown' then
   self.GAME.modifiers.cm_all_facedown = true
+elseif v.id == 'cm_soul_luck' then
+  self.GAME.modifiers.cm_soul_luck = v.value
 """
 match_indent = true
 overwrite = false
@@ -163,6 +165,26 @@ if G.GAME.modifiers.cm_all_facedown == true then
 card.facing = 'front'
 card.sprite_facing = 'front'
 end
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then"
+position = "at"
+payload = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > (tonumber(G.GAME.modifiers.cm_soul_luck) or 0.997) then"
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for k, v in pairs(eligible_bosses) do"
+position = "before"
+payload = """
+if G.GAME.modifiers.cm_repeat_bosses then min_use = 1000 end
 """
 match_indent = true
 overwrite = false
