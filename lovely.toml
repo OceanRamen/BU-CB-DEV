@@ -191,3 +191,12 @@ if G.GAME.modifiers.cm_repeat_bosses then min_use = 1000 end
 """
 match_indent = true
 overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "love.graphics.setCanvas(G.AA_CANVAS)"
+position = "before"
+payload = 'ChallengeMod.draw()'
+match_indent = true
+overwrite = false

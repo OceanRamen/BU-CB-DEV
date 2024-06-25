@@ -81,7 +81,11 @@ function ChallengeMod.localizeChalNames()
     v.DATA.name = v.NAME
     v.DATA.id = "cm_mod_" .. v.NAME:gsub("%s+", "_") .. "_1"
     table.insert(v.DATA.rules.custom, {id="cm_credit", value=v.DESIGNER})
+    table.insert(v.DATA.rules.custom, { id = "cm_VERSION", value = v.VERSION})
     G.localization.misc.challenge_names[v.DATA.id] = v.DATA.name
+  end
+  if not ChallengeMod.RELEASE then
+    G.localization.misc.v_text.ch_c_cm_VERSION = {"{C:purple}VERSION: #1#{}"}
   end
   G.localization.misc.v_text.ch_c_cm_credit = { "Designed by: {C:green}#1#{}" }
 end
