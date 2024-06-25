@@ -78,6 +78,8 @@ end)
 
 function ChallengeMod.localizeChalNames()
   for i, v in ipairs(CustomChallenges) do
+    table.insert(v.DATA.name, {name = v.NAME})
+    table.insert(v.DATA.id, {id = "cm_mod_" .. v.NAME:gsub("%s+", "_") .. "_1"})
     table.insert(v.DATA.rules.custom, {id="cm_credit", value=v.DESIGNER})
     G.localization.misc.challenge_names[v.DATA.id] = v.DATA.name
   end

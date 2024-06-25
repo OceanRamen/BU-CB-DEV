@@ -64,8 +64,6 @@ Challenge.DESIGNER = "sharktamer"
 Challenge.DATE_CREATED = 240616 -- Y/M/D
 Challenge.VERSION = "1.0.0"
 Challenge.DATA = {
-  name = Challenge.NAME,
-  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     modifiers = {
       { id = "dollars", value = 0 },

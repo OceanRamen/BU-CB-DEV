@@ -4,12 +4,10 @@ Challenge.DESIGNER = "Cheerio1101"
 Challenge.DATE_CREATED = 240617 -- Y/M/D
 Challenge.VERSION = "1.0.0"
 Challenge.DATA = {
-  name = Challenge.NAME,
-  id = "cm_mod_" .. Challenge.NAME:gsub("%s+", "_") .. "_1",
   rules = {
     custom = {
       { id = "cm_noshop"},
-      { id = "no_reward_specific", value = "Small"},
+      { id = "no_reward"},
     },
     modifiers = {
       { id = "discards", value = 2 },
