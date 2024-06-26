@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Empty Canvas"
 Challenge.DESIGNER = "CampfireCollective"
 Challenge.DATE_CREATED = 240626
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.1"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -26,6 +26,7 @@ Challenge.DATA = {
       {id = "v_palette"},
     },
     banned_other = {
+      { id = "bl_manacle", type = "blind" },
     },
   },
 }
