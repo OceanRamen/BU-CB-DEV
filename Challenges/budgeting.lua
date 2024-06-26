@@ -31,11 +31,11 @@ Challenge.DATA = {
       { id = "j_delayed_grat" },
       { id = "j_cloud_9" },
       { id = "j_midas_mask" },
-      { id = "j_gift_card" },
+      { id = "j_gift" },
       { id = "j_mail" },
       { id = "j_rough_gem" },
       { id = "j_satellite" },
-      { id = "c_temperence" },
+      { id = "c_temperance" },
       { id = "c_hermit" },
     },
     banned_tags = {

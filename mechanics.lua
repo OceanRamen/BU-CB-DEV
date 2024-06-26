@@ -4,6 +4,7 @@ local nativefs = require("nativefs")
 function ChallengeMod.localizeMechDescriptions()
   --  Custom Mechanic Descriptions
   G.localization.misc.v_text.ch_c_all_perishable = { "All Jokers are {C:attention}Perishable{}" }
+  G.localization.misc.v_text.ch_c_cm_record = { "Current Record: {C:attention}#1#{} by {C:attention}#2#{}" }
   G.localization.misc.v_text.ch_c_cm_pinned_jokers = { "All Jokers are {C:attention}Pinned{}}" }
   G.localization.misc.v_text.ch_c_decreasing_handsize = { "Hand size {C:attention}Decreases{} each Ante" }
   G.localization.misc.v_text.ch_c_all_rental = { "All Jokers are {C:attention}Rental{}" }
