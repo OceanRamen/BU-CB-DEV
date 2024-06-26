@@ -16,6 +16,32 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_noshop = { "{C:attention}No Shop" }
   G.localization.misc.v_text.ch_c_cm_hand_kills = { "Lose the game if played hand contains a {C:blue}#1#{}" }
   G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down" }
+  G.localization.misc.v_text.ch_c_cm_repeat_bosses = { "Bosses may repeat in this challenge." }
+  G.localization.misc.v_text.ch_c_cm_soul_luck = { "Your soul feels weird..." }
+end
+
+function ChallengeMod.evaluate_rules()
+  if v.id == 'cm_noshop' then
+    self.GAME.modifiers.cm_noshop = true
+  elseif v.id == 'cm_scaling' then
+    self.GAME.modifiers.cm_scaling = v.value
+  elseif v.id == 'cm_stake' then
+    ChallengeMod.custom_stake(v.value)
+  elseif v.id == 'all_perishable' then
+    self.GAME.modifiers.all_perishable = true
+  elseif v.id == 'all_rental' then
+    self.GAME.modifiers.all_rental = true
+  elseif v.id == 'no_shop_planets' then
+    self.GAME.planet_rate = 0
+  elseif v.id == 'no_shop_tarots' then
+    self.GAME.tarot_rate = 0
+  elseif v.id == 'cm_all_facedown' then
+    self.GAME.modifiers.cm_all_facedown = true
+  elseif v.id == 'cm_soul_luck' then
+    self.GAME.modifiers.cm_soul_luck = v.value
+  elseif v.id == 'cm_repeat_bosses' then
+    self.GAME.modifiers.cm_repeat_bosses = true
+  end
 end
 
 local get_blind_amount_ref = get_blind_amount

@@ -6,7 +6,7 @@ Challenge.VERSION = "1.0.0"
 Challenge.DATA = {
   rules = {
     custom = {
-      { id = 'cm_wildin' },
+      { id = 'cm_repeat_bosses' },
     },
     modifiers = {},
   },
@@ -207,7 +207,7 @@ Challenge.DATA = {
          "j_caino",
          "j_triboulet",
          "j_yorick",
-         "j_luchador"
+         "j_luchador",
         },
       },
     },
