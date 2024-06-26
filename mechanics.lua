@@ -4,6 +4,7 @@ local nativefs = require("nativefs")
 function ChallengeMod.localizeMechDescriptions()
   --  Custom Mechanic Descriptions
   G.localization.misc.v_text.ch_c_all_perishable = { "All Jokers are {C:attention}Perishable{}" }
+  G.localization.misc.v_text.ch_c_cm_pinned_jokers = { "All Jokers are {C:attention}Pinned{}}" }
   G.localization.misc.v_text.ch_c_decreasing_handsize = { "Hand size {C:attention}Decreases{} each Ante" }
   G.localization.misc.v_text.ch_c_all_rental = { "All Jokers are {C:attention}Rental{}" }
   G.localization.misc.v_text.ch_c_cm_force_hand = { "Played hands must contain a {C:blue}#1#{}" }
@@ -11,9 +12,8 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_no_overscoring = { "{C:attention}Blind{} score must not exceed {C:green}#1#%{}" }
   G.localization.misc.v_text.ch_c_no_shop_planets = { "Planets no longer appear in the {C:attention}shop{}" }
   G.localization.misc.v_text.ch_c_no_shop_tarots = { "Tarots no longer appear in the {C:attention}shop{}" }
-  G.localization.misc.v_text.ch_c_cm_stake = { "Playing on the {C:attention}#2#{} stake" }
   G.localization.misc.v_text.ch_c_cm_scaling = { "Custom ante scaling" }
-  G.localization.misc.v_text.ch_c_cm_scaling_manual = { "Custom ante and blind scaling" }
+  -- G.localization.misc.v_text.ch_c_cm_scaling_manual = { "Custom ante and blind scaling" }
   G.localization.misc.v_text.ch_c_cm_noshop = { "{C:attention}No Shop" }
   G.localization.misc.v_text.ch_c_cm_hand_kills = { "Lose the game if played hand contains a {C:blue}#1#{}" }
   G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down" }
@@ -24,12 +24,12 @@ end
 function ChallengeMod.evaluate_rules()
   if v.id == 'cm_noshop' then
     self.GAME.modifiers.cm_noshop = true
+  elseif v.id == 'cm_auto_pack' then
+    self.GAME.modifiers.cm_auto_pack = true
   elseif v.id == 'cm_decreasing_handsize' then
     self.GAME.modifiers.cm_decreasing_handsize = v.value
   elseif v.id == 'cm_scaling' then
     self.GAME.modifiers.cm_scaling = v.value
-  elseif v.id == 'cm_stake' then
-    ChallengeMod.custom_stake(v.value)
   elseif v.id == 'all_perishable' then
     self.GAME.modifiers.all_perishable = true
   elseif v.id == 'all_rental' then
@@ -44,6 +44,8 @@ function ChallengeMod.evaluate_rules()
     self.GAME.modifiers.cm_soul_luck = v.value
   elseif v.id == 'cm_repeat_bosses' then
     self.GAME.modifiers.cm_repeat_bosses = true
+  elseif v.id == 'cm_pinned_jokers' then
+    self.GAME.modifiers.cm_pinned_jokers = true
   end
 end
 
@@ -151,7 +153,24 @@ function Blind:defeat(silent)
     taxedAlert("-$" .. tax)
     ease_dollars(-tax)
   end
-
+  if G.GAME.modifiers.cm_auto_pack then
+    local key = "p_arcana_mega_" .. (math.random(1, 2))
+    local card = Card(
+      G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
+      G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2,
+      G.CARD_W * 1.27,
+      G.CARD_H * 1.27,
+      G.P_CARDS.empty,
+      G.P_CENTERS[key],
+      { bypass_discovery_center = true, bypass_discovery_ui = true }
+    )
+    card.cost = 0
+    card.from_tag = false
+    G.FUNCS.use_card({ config = { ref_table = card } })
+    card:start_materialize()
+    G.GAME.cm_auto_pack_opened = true
+    delay(0.6)
+  end
   blind_defeat_ref(self, silent)
 
   if
@@ -160,4 +179,3 @@ function Blind:defeat(silent)
     ChallengeMod.fold()
   end
 end
-

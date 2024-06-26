@@ -61,6 +61,9 @@ end
 if G.GAME.modifiers.all_rental then
   card:set_rental(true)
 end
+if G.GAME.modifiers.cm_pinned_jokers then
+  card.pinned = true
+end
 '''
 match_indent = true
 overwrite = false
