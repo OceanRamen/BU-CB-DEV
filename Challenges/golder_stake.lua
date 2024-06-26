@@ -1,5 +1,5 @@
 local Challenge = {}
-Challenge.NAME = "Golder-Stake"
+Challenge.NAME = "Test Stake"
 Challenge.DESIGNER = "Djynasty"
 Challenge.DATE_CREATED = 240614 -- Y/M/D
 Challenge.VERSION = "1.0.0"

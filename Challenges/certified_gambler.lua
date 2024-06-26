@@ -2,10 +2,11 @@ local Challenge = {}
 Challenge.NAME = "Certified Gambler"
 Challenge.DESIGNER = "CampfireCollective"
 Challenge.DATE_CREATED = 240616 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.1.0"
 Challenge.DATA = {
   rules = {
     custom = {
+      {id = "cm_noshop"}
     },
   },
   jokers = {

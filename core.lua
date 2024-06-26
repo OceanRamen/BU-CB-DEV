@@ -12,6 +12,7 @@ ChallengeMod.VERSION = "BU-CB-".."1.0.0".."-"..(ChallengeMod.RELEASE and "FULL" 
 function ChallengeMod.draw()
   if not ChallengeMod.RELEASE then
     love.graphics.push()
+    love.graphics.setColor(G.C.WHITE)
     love.graphics.print(ChallengeMod.VERSION, 10, 30)
     love.graphics.pop()
   end
