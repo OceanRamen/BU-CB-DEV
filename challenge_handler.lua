@@ -1,6 +1,5 @@
 local lovely = require("lovely")
 local nativefs = require("nativefs")
-ChallengeMod.PATH = lovely.mod_dir .. "/ChallengeMod/"
 
 function inspectDepth(table, indent, depth)
   if depth and depth > 5 then -- Limit the depth to avoid deep nesting

@@ -183,3 +183,16 @@ position = "before"
 payload = 'ChallengeMod.draw()'
 match_indent = true
 overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = 'self.config.blind = blind or {}'
+position = "before"
+payload = """
+if G.GAME.modifiers.cm_decreasing_handsize and self:get_type() == 'Boss' then
+  G.hand:change_size(-G.GAME.modifiers.cm_decreasing_handsize)
+end
+"""
+match_indent = true
+overwrite = false

@@ -2,8 +2,9 @@ ChallengeMod = {}
 function initChallenges()
   local lovely = require("lovely")
   local nativefs = require("nativefs")
-  assert(load(nativefs.read(lovely.mod_dir .. "/ChallengeMod/challenge_handler.lua")))()
-  assert(load(nativefs.read(lovely.mod_dir .. "/ChallengeMod/mechanics.lua")))()
+  ChallengeMod.PATH = lovely.mod_dir .. "/BU-CB/"
+  assert(load(nativefs.read(ChallengeMod.PATH.."challenge_handler.lua")))()
+  assert(load(nativefs.read(ChallengeMod.PATH.."mechanics.lua")))()
 end
 
 ChallengeMod.RELEASE = false

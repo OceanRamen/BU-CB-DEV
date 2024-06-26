@@ -4,6 +4,7 @@ local nativefs = require("nativefs")
 function ChallengeMod.localizeMechDescriptions()
   --  Custom Mechanic Descriptions
   G.localization.misc.v_text.ch_c_all_perishable = { "All Jokers are {C:attention}Perishable{}" }
+  G.localization.misc.v_text.ch_c_decreasing_handsize = { "Hand size {C:attention}Decreases{} each Ante" }
   G.localization.misc.v_text.ch_c_all_rental = { "All Jokers are {C:attention}Rental{}" }
   G.localization.misc.v_text.ch_c_cm_force_hand = { "Played hands must contain a {C:blue}#1#{}" }
   G.localization.misc.v_text.ch_c_cm_negative_interest = { "Money is lost from {C:attention}Interest{}" }
@@ -23,6 +24,8 @@ end
 function ChallengeMod.evaluate_rules()
   if v.id == 'cm_noshop' then
     self.GAME.modifiers.cm_noshop = true
+  elseif v.id == 'cm_decreasing_handsize' then
+    self.GAME.modifiers.cm_decreasing_handsize = v.value
   elseif v.id == 'cm_scaling' then
     self.GAME.modifiers.cm_scaling = v.value
   elseif v.id == 'cm_stake' then
