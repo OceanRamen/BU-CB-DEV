@@ -21,6 +21,9 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down" }
   G.localization.misc.v_text.ch_c_cm_repeat_bosses = { "Bosses may repeat in this challenge." }
   G.localization.misc.v_text.ch_c_cm_soul_luck = { "Your soul feels weird..." }
+  G.localization.misc.v_text.ch_c_cm_no_after_hand = { "{C:attention}After hand{} Joker abilities are disabled" }
+  G.localization.misc.v_text.ch_c_cm_no_after_round = { "{C:attention}After round{} Joker abilities are disabled" }
+  G.localization.misc.v_text.ch_c_cm_no_on_discard = { "{C:attention}On discard{} Joker abilities are disabled" }
 end
 
 function ChallengeMod.evaluate_rules()
