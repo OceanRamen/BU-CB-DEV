@@ -14,6 +14,7 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_no_shop_planets = { "Planets no longer appear in the {C:attention}shop{}" }
   G.localization.misc.v_text.ch_c_no_shop_tarots = { "Tarots no longer appear in the {C:attention}shop{}" }
   G.localization.misc.v_text.ch_c_cm_scaling = { "Custom ante scaling" }
+  G.localization.misc.v_text.ch_c_set_seed = {"Set Seed: {C:attention}???{}"}
   -- G.localization.misc.v_text.ch_c_cm_scaling_manual = { "Custom ante and blind scaling" }
   G.localization.misc.v_text.ch_c_cm_noshop = { "{C:attention}No Shop" }
   G.localization.misc.v_text.ch_c_cm_hand_kills = { "Lose the game if played hand contains a {C:blue}#1#{}" }
