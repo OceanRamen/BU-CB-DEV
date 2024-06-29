@@ -1,10 +1,17 @@
-local http = require("https")
-local url = "https://gist.github.com/OceanRamen/bb6c4f23509bacf050d6338090dc012c/raw"
-local code, body = http.request(url)
-if not body then
-  error(code)
-end
 
+function generateSeed()
+  local date = os.date("*t")
+  local dateString = string.format("%04d%02d%02d", date.year, date.month, date.day)
+  math.randomseed(tonumber(dateString))
+  local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  local length = 8
+  local result = ""
+  for i = 1, length do
+    local index = math.random(1, #chars)
+    result = result .. chars:sub(index, index)
+  end
+  return result
+end
 
 local Challenge = {}
 Challenge.NAME = "Daily Challenge"
@@ -15,7 +22,7 @@ Challenge.DATA = {
   rules = {
     custom = {
       {id = "daily"},
-      {id = "set_seed", value = body},
+      {id = "set_seed", value = generateSeed()},
     },
     modifiers = {},
   },
