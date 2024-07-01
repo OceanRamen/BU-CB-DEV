@@ -1,14 +1,21 @@
-Tag = {}
-Tag.__index = Tag
+ChallengeMod.Tag = {}
+ChallengeMod.Tag.__index = ChallengeMod.Tag
 
-function Tag:new(name, items)
+--- Creates a new Tag instance.
+-- @param name The name of the tag.
+-- @param items The items associated with the tag.
+-- @return A new Tag instance.
+function ChallengeMod.Tag:new(name, items)
   local obj = { name = name, items = items }
-  setmetatable(obj, Tag)
+  setmetatable(obj, ChallengeMod.Tag)
   return obj
 end
 
--- Define the get_items method
-function Tag:get_items(filters, hide)
+--- Retrieves items based on filters and hides specified items.
+-- @param filters A list of filters to apply.
+-- @param hide A list of items to hide.
+-- @return A list of filtered items.
+function ChallengeMod.Tag:get_items(filters, hide)
   local results = {}
 
   -- Create a set for hide items for faster lookup
@@ -44,9 +51,9 @@ function Tag:get_items(filters, hide)
   return results
 end
 
-
+--- Initializes the tags for ChallengeMod.
 ChallengeMod.tags = {
-  money_generators = Tag:new("money_generators", {
+  money_generators = ChallengeMod.Tag:new("money_generators", {
     JOKERS = {
       "j_credit_card",
       "j_delayed_grat",
@@ -70,24 +77,11 @@ ChallengeMod.tags = {
     VOUCHERS = { "v_seed_money", "v_money_tree" },
     SKIPS = { "tag_investment", "tag_handy", "tag_garbage", "tag_skip", "tag_economy" },
   }),
-  test = Tag:new("test", {
-    JOKERS = {
-      "j_credit_card",
-    },
-  }),
 }
 
--- -- Fetch items with filters
-local filtered_items = ChallengeMod.tags.money_generators:get_items({ "JOKERS", "TAROTS" })
-print(table.concat(filtered_items, ", "))
--- -- Output: j_credit_card, j_delayed_grat, j_business, j_egg, j_faceless, j_todo_list, j_cloud_9, j_rocket, j_gift, j_mail, j_reserved_parking, j_golden, j_ticket, j_rough_gem, j_matador, j_satellite, c_hermit, c_temperance
-
--- -- -- Fetch items with filters and hide a specific item
-local filtered_hidden_items = ChallengeMod.tags.money_generators:get_items({ "JOKERS" }, {"j_credit_card"})
-print(table.concat(filtered_hidden_items, ", "))
--- -- Output: j_delayed_grat, j_business, j_egg, j_faceless, j_todo_list, j_cloud_9, j_rocket, j_gift, j_mail, j_reserved_parking, j_golden, j_ticket, j_rough_gem, j_matador, j_satellite
-
--- Function to format items as Lua table entries
+--- Formats items into a list of tables with an 'id' key.
+-- @param items The list of items to format.
+-- @return A list of formatted items.
 function format_items(items)
   local formatted_items = {}
   for _, item in ipairs(items) do
