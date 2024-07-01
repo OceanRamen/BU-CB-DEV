@@ -10,10 +10,12 @@
 
 **Step 2.**
 > Click "Code"
+> 
 > ![How To Download (fig. 1)](Assets/readme_fig1.png)
 
 **Step 3.**
 > Click "Download ZIP"
+> 
 > ![How To Download (fig. 2)](Assets/readme_fig2.png)
 
 **TODO**
