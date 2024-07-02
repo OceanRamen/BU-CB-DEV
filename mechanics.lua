@@ -25,6 +25,8 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_no_after_hand = { "{C:attention}After hand{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_no_after_round = { "{C:attention}After round{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_no_on_discard = { "{C:attention}On discard{} Joker abilities are disabled" }
+  G.localization.misc.v_text.ch_c_cm_rand_card_destroy = { "You lose {C:attention}#1#{} cards at the end of every round and on round skip." }
+  G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
 end
 
 function ChallengeMod.evaluate_rules()
@@ -52,6 +54,27 @@ function ChallengeMod.evaluate_rules()
     self.GAME.modifiers.cm_repeat_bosses = true
   elseif v.id == 'cm_pinned_jokers' then
     self.GAME.modifiers.cm_pinned_jokers = true
+  elseif v.id == 'cm_rand_card_destroy' then
+    self.GAME.modifiers.cm_rand_card_destroy = v.value
+  elseif v.id == 'cm_draw_deck' then
+    self.GAME.modifiers.cm_draw_deck = true
+  end
+end
+
+
+function ChallengeMod.destroy_random_cards(amount)
+  if amount <= #G.playing_cards then
+    for i=1, amount, 1 do
+      local index = math.random(1, #G.playing_cards+1)
+      local card = G.playing_cards[index]
+      card:remove()
+    end
+  else
+    for i=1, #G.playing_cards, 1 do
+      local index = math.random(1, #G.playing_cards)
+      local card = G.playing_cards[index]
+      card:remove()
+    end
   end
 end
 
@@ -157,7 +180,7 @@ function Blind:defeat(silent)
   if G.GAME.modifiers.cm_negative_interest then
     local tax = math.min(math.floor(G.GAME.dollars / 5), G.GAME.interest_cap / 5)
     taxedAlert("-$" .. tax)
-    ease_dollars(-tax)
+    ease_dollars(-math.abs(tax))
   end
   if G.GAME.modifiers.cm_auto_pack then
     local key = "p_arcana_mega_" .. (math.random(1, 2))

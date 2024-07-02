@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Highroll"
 Challenge.DESIGNER = "Cheerio1101"
 Challenge.DATE_CREATED = 240614 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.1"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -24,8 +24,14 @@ Challenge.DATA = {
     type = "Challenge Deck",
   },
   restrictions = {
-    banned_cards = {},
-    banned_tags = {},
+    banned_cards = {
+      { id = 'v_reroll_surplus' },
+      { id = 'v_reroll_glut' },
+      { id = 'j_chaos' },
+    },
+    banned_tags = {
+      { id = 'tag_d_six' },
+    },
     banned_other = {},
   },
 }

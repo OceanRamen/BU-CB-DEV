@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Budgeting"
 Challenge.DESIGNER = "Djynasty"
 Challenge.DATE_CREATED = 240610 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.1"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -35,12 +35,20 @@ Challenge.DATA = {
       { id = "j_mail" },
       { id = "j_rough_gem" },
       { id = "j_satellite" },
+      { id = "j_todo_list" },
+      { id = "j_certificate" },
       { id = "c_temperance" },
       { id = "c_hermit" },
+      { id = "c_devil" },
+      { id = "c_immolate" },
+      { id = "c_talisman" },
     },
     banned_tags = {
       { id = "tag_investment" },
       { id = "tag_economy" },
+      { id = "tag_handy" },
+      { id = "tag_garbage" },
+      { id = "tag_speed" },
     },
     banned_other = {},
   },
