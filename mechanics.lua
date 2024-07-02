@@ -29,7 +29,7 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
 end
 
-function ChallengeMod.evaluate_rules()
+function ChallengeMod.evaluate_rules(self, v)
   if v.id == 'cm_noshop' then
     self.GAME.modifiers.cm_noshop = true
   elseif v.id == 'cm_auto_pack' then

@@ -39,7 +39,7 @@ function ChallengeMod.update(dt)
     ChallengeMod.DAILY.DATE.current_date = current_date
     ChallengeMod.DAILY.DATE.elapsedTime = ChallengeMod.DAILY.DATE.elapsedTime - tperiod
     ChallengeMod.DAILY.write_score(400, current_date)
-    print(ChallengeMod.DAILY.get_score(current_date))
+    -- print(ChallengeMod.DAILY.get_score(current_date))
     ChallengeMod.DAILY.update_challenge_text()
     
   end
