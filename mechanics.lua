@@ -1,6 +1,7 @@
 local lovely = require("lovely")
 local nativefs = require("nativefs")
 
+
 function ChallengeMod.localizeMechDescriptions()
   --  Custom Mechanic Descriptions
   G.localization.misc.v_text.ch_c_all_perishable = { "All Jokers are {C:attention}Perishable{}" }

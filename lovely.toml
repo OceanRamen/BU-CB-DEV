@@ -233,3 +233,14 @@ if not G.GAME.modifiers.cm_no_on_discard then eval = G.jokers.cards[j]:calculate
 """
 match_indent = true
 overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if self.STATE == self.STATES.SELECTING_HAND then"
+position = "before"
+payload = """
+ChallengeMod.update(dt)
+"""
+match_indent = true
+overwrite = false
