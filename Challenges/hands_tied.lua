@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Hands Tied"
 Challenge.DESIGNER = "Wingcap"
 Challenge.DATE_CREATED = 240617 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.1"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -31,7 +31,9 @@ Challenge.DATA = {
       { id = "v_recyclomancy" },
     },
     banned_tags = {},
-    banned_other = {},
+    banned_other = {
+      { id = "bl_water", type = "blind" },
+    },
   },
 }
 

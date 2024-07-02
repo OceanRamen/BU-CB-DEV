@@ -71,10 +71,10 @@ overwrite = false
 [[patches]]
 [patches.pattern]
 target = "game.lua"
-pattern = 'elseif v.value then'
+pattern = "if v.id == 'no_reward' then"
 position = "before"
 payload = """
-ChallengeMod.evaluate_rules()
+ChallengeMod.evaluate_rules(self, v)
 """
 match_indent = true
 overwrite = false

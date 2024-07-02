@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Oops! All Sixes!"
 Challenge.DESIGNER = "Cheerio1101"
 Challenge.DATE_CREATED = 240617 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.1"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -93,7 +93,8 @@ Challenge.DATA = {
   },
   restrictions = {
     banned_cards = {
-      --maybe ban celestial packs, but too many buffoon packs trivializes the challenge so maybe not.
+      { id = "c_judgement" },
+      { id = "c_wraith" },
       {
         id = "p_arcana_normal_1",
         ids = {
@@ -116,7 +117,10 @@ Challenge.DATA = {
         ids = { "p_spectral_normal_1", "p_spectral_normal_2", "p_spectral_jumbo_1", "p_spectral_mega_1" },
       },
     },
-    banned_tags = {},
+    banned_tags = {
+      { id = "tag_top_up" },
+      { id = "tag_buffoon" },
+    },
     banned_other = {},
   },
 }
