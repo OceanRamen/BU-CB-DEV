@@ -92,3 +92,83 @@ function ChallengeMod.Helper.inspect(table)
 
   return str
 end
+
+function G.UIDEF.challenge_list_page(_page)
+  local snapped = false
+  local challenge_list = {}
+  for k, v in ipairs(G.CHALLENGES) do
+    if k > G.CHALLENGE_PAGE_SIZE * (_page or 0) and k <= G.CHALLENGE_PAGE_SIZE * ((_page or 0) + 1) then
+      if G.CONTROLLER.focused.target and G.CONTROLLER.focused.target.config.id == "challenge_page" then
+        snapped = true
+      end
+      local challenge_completed = G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[v.id or ""]
+      local challenge_unlocked = G.PROFILES[G.SETTINGS.profile].challenges_unlocked
+        and (G.PROFILES[G.SETTINGS.profile].challenges_unlocked >= k)
+      local challenge_custom = false
+      local challenge_daily = false
+      if string.find(v.id, "daily_challenge") then
+        challenge_daily = true
+      end
+
+      if string.sub(v.id, 1, 2) == "cm" then
+        challenge_custom = true
+      end
+
+      challenge_list[#challenge_list + 1] = {
+        n = G.UIT.R,
+        config = { align = "cm" },
+        nodes = {
+          {
+            n = G.UIT.C,
+            config = { align = "cl", minw = 0.8 },
+            nodes = {
+              { n = G.UIT.T, config = { text = k .. "", scale = 0.4, colour = G.C.WHITE } },
+            },
+          },
+          UIBox_button({
+            id = k,
+            col = true,
+            label = { challenge_unlocked and localize(v.id, "challenge_names") or localize("k_locked") },
+            button = challenge_unlocked and "change_challenge_description" or "nil",
+            colour = challenge_daily and G.C.GOLD or challenge_custom and G.C.GREEN or challenge_unlocked and G.C.RED or G.C.GREY,
+            minw = 4,
+            scale = 0.4,
+            minh = 0.6,
+            focus_args = { snap_to = not snapped },
+          }),
+          {
+            n = G.UIT.C,
+            config = { align = "cm", padding = 0.05, minw = 0.6 },
+            nodes = {
+              {
+                n = G.UIT.C,
+                config = {
+                  minh = 0.4,
+                  minw = 0.4,
+                  emboss = 0.05,
+                  r = 0.1,
+                  colour = challenge_completed and G.C.GREEN or G.C.BLACK,
+                },
+                nodes = {
+                  challenge_completed
+                      and { n = G.UIT.O, config = { object = Sprite(
+                        0,
+                        0,
+                        0.4,
+                        0.4,
+                        G.ASSET_ATLAS["icons"],
+                        { x = 1, y = 0 }
+                      ) } }
+                    or nil,
+                },
+              },
+            },
+          },
+        },
+      }
+      snapped = true
+    end
+  end
+
+  return { n = G.UIT.ROOT, config = { align = "cm", padding = 0.1, colour = G.C.CLEAR }, nodes = challenge_list }
+end
