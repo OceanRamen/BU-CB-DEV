@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > 0.997 then"
+position = "at"
+payload = "if pseudorandom('soul_'.._type..G.GAME.round_resets.ante) > (tonumber(G.GAME.modifiers.cm_soul_luck) or 0.997) then"
+match_indent = true
+overwrite = false

@@ -1,0 +1,49 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "nuGC(nil, nil, true)"
+position = "after"
+payload = """
+if G.GAME.modifiers.cm_all_facedown == true then G.debug_tooltip_toggle = true else G.debug_tooltip_toggle = false end
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """self.facing = 'front'"""
+position = "after"
+payload = """if G.GAME.modifiers.cm_all_facedown == true then
+self.facing = 'back' end"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = """self.sprite_facing = 'front'"""
+position = "after"
+payload = """if G.GAME.modifiers.cm_all_facedown == true then
+self.sprite_facing = 'back' end"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(self, card)"
+position = "before"
+payload = """
+if G.GAME.modifiers.cm_all_facedown == true then
+card.facing = 'front'
+card.sprite_facing = 'front'
+end
+"""
+match_indent = true
+overwrite = false

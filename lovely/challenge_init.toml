@@ -1,0 +1,66 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.module]
+source = 'nativefs.lua'
+before = 'main.lua'
+name = 'nativefs'
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self:load_profile(G.SETTINGS.profile or 1)"
+position = "after"
+payload = "initChallenges()"
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.copy]
+target = "main.lua"
+position = "append"
+sources = ["core.lua"]
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "function init_localization()"
+position = "after"
+payload = '''
+ChallengeMod.localizeChalNames()
+ChallengeMod.localizeMechDescriptions()
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.id == 'no_reward' then"
+position = "before"
+payload = """
+ChallengeMod.evaluate_rules(self, v)
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = """game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}"""
+position = "at"
+payload = """game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value, v.name}}}"""
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "love.graphics.setCanvas(G.AA_CANVAS)"
+position = "before"
+payload = 'ChallengeMod.draw()'
+match_indent = true
+overwrite = false

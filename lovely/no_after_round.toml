@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "eval = G.jokers.cards[i]:calculate_joker({end_of_round = true, game_over = game_over})"
+position = "at"
+payload = """
+if not G.GAME.modifiers.cm_no_after_round then eval = G.jokers.cards[i]:calculate_joker({end_of_round = true, game_over = game_over}) end
+"""
+match_indent = true
+overwrite = true

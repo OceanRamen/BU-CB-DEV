@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for k, v in pairs(eligible_bosses) do"
+position = "before"
+payload = """
+if G.GAME.modifiers.cm_repeat_bosses then min_use = 1000 end
+"""
+match_indent = true
+overwrite = false

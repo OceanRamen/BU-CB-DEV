@@ -1,0 +1,47 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.eternal then _joker:set_eternal(true) end"
+position = "after"
+payload = """
+if v.perishable then _joker:set_perishable(true) end
+if v.rental then _joker:set_rental(true) end
+"""
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if (area == G.shop_jokers) or (area == G.pack_cards) then"
+position = "before"
+payload = '''
+if G.GAME.modifiers.all_perishable then
+  card:set_perishable(true)
+end
+if G.GAME.modifiers.all_rental then
+  card:set_rental(true)
+end
+if G.GAME.modifiers.cm_pinned_jokers then
+  card.pinned = true
+end
+'''
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "if v.pinned then"
+position = "before"
+payload = '''
+if v.rental then card:set_rental(true) end
+if v.perishable then card:set_perishable(true) end
+'''
+match_indent = true
+overwrite = false
