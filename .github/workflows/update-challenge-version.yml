@@ -67,3 +67,4 @@ if __name__ == '__main__':
         print('Usage: python update_version.py <file_path>')
     else:
         update_version(sys.argv[1])" > update_version.py
+"
