@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.chips = get_blind_amount(G.GAME.round_resets.ante)*self.mult*G.GAME.starting_params.ante_scaling"
+position = "after"
+payload = """
+if G.GAME.modifiers.dm_boss_increase and self.boss then
+self.chips = self.chips*tonumber(G.GAME.modifiers.dm_boss_increase)
+end
+"""
+match_indent = true
+overwrite = false

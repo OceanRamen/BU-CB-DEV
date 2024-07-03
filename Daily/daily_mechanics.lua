@@ -47,6 +47,10 @@ function ChallengeMod.evaluate_daily_modifiers(self, v)
     --     self.GAME.modifiers.dm_<ID> = true
     -- elseif ...
     if v.id == "set_seed" then
-        self.GAME.modifiers.set_seed = v.value
+      self.GAME.modifiers.set_seed = v.value
+    elseif v.id == "dm_boss_increase" then
+      self.GAME.modifiers.dm_boss_increase = v.value
+    elseif v.id == "dm_ante_handsize_change" then
+      self.GAME.modifiers.dm_ante_handsize_change = v.value
     end
 end

@@ -182,6 +182,81 @@ local daily_modifiers = {
       },
     },
   },
+  {
+    NAME = "High Stakes",
+    DESCRIPTION = "All Blinds require {c:chips}25%{} more chips to defeat",
+    DATA = {
+      rules = {
+        custom = {{id = cm_all_blind_increase, value = 1.25},}, 
+        modifiers = {},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Short Stack",
+    DESCRIPTION = "Start with only 1 discard, but you receive {c:money}$3{} for each remaining hand.",
+    DATA = {
+      rules = {
+        custom = {},
+        modifiers = {
+          { id = "discards", value = 1 },
+          { id = "dollars_per_hand", value = 3 },
+        },
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Big Boss",
+    DESCRIPTION = "Boss Blinds are {c:attention}2x{} as big",
+    DATA = {
+      rules = {
+        custom = {{id = "dm_boss_increase", value = 2},},
+        modifiers = {},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Early Bird",
+    DESCRIPTION = "{c:attention}+1{} Hand Size for the first 3 Antes, then {c:attention}-2 Hand Size",
+    DATA = {
+      rules = {
+        custom = {{ id = "dm_ante_handsize_change", value = 3},},
+        modifiers = {{ id = "hand_size", value = 6},},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
 }
 
 -- Define the Daily Challenge object

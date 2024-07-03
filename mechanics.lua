@@ -27,6 +27,7 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_no_on_discard = { "{C:attention}On discard{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_rand_card_destroy = { "You lose {C:attention}#1#{} cards at the end of every round and on round skip." }
   G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
+  G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger." }
 end
 
 function ChallengeMod.evaluate_rules(self, v)
@@ -58,6 +59,8 @@ function ChallengeMod.evaluate_rules(self, v)
     self.GAME.modifiers.cm_rand_card_destroy = v.value
   elseif v.id == 'cm_draw_deck' then
     self.GAME.modifiers.cm_draw_deck = true
+  elseif v.id == 'cm_all_blind_increase' then
+    self.GAME.modifiers.cm_all_blind_increase = v.value
   end
 end
 
@@ -87,12 +90,22 @@ function get_blind_amount(ante)
       return 100
     end
     if ante <= 8 then
+      if G.GAME.modifiers.cm_all_blind_increase then
+        return amounts[ante]*tonumber(G.GAME.modifiers.cm_all_blind_increase)
+      end
       return amounts[ante]
     end
     local a, b, c, d = amounts[8], 1.6, ante - 8, 1 + 0.2 * (ante - 8)
     local amount = math.floor(a * (b + (k * c) ^ d) ^ c)
     amount = amount - amount % (10 ^ math.floor(math.log10(amount) - 1))
+    if G.GAME.modifiers.cm_all_blind_increase then
+      amount = amount*tonumber(G.GAME.modifiers.cm_all_blind_increase)
+    end
     return amount
+  end
+
+  if G.GAME.modifiers.cm_all_blind_increase then
+    return get_blind_amount_ref(ante)*tonumber(G.GAME.modifiers.cm_all_blind_increase)
   end
 
   return get_blind_amount_ref(ante)
