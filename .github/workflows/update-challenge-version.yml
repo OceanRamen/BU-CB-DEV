@@ -45,26 +45,27 @@ jobs:
 
       - name: Create Update Script
         run: |
-          echo "import sys
-import re
+          echo """
+          import sys
+          import re
 
-def update_version(file_path):
-    with open(file_path, 'r') as file:
-        content = file.read()
-    version_match = re.search(r'Challenge.VERSION = \"(\d+)\.(\d+)\.(\d+)\"', content)
-    if version_match:
-        major, minor, patch = map(int, version_match.groups())
-        new_version = f'Challenge.VERSION = \"{major}.{minor}.{patch + 1}\"'
-        new_content = re.sub(r'Challenge.VERSION = \"\d+\.\d+\.\d+\"', new_version, content)
-        with open(file_path, 'w') as file:
-            file.write(new_content)
-        print(f'Updated {file_path} to {new_version}')
-    else:
-        print(f'No version found in {file_path}')
-
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print('Usage: python update_version.py <file_path>')
-    else:
-        update_version(sys.argv[1])" > update_version.py
-"
+          def update_version(file_path):
+              with open(file_path, 'r') as file:
+                  content = file.read()
+              version_match = re.search(r'Challenge.VERSION = \"(\d+)\.(\d+)\.(\d+)\"', content)
+              if version_match:
+                  major, minor, patch = map(int, version_match.groups())
+                  new_version = f'Challenge.VERSION = \"{major}.{minor}.{patch + 1}\"'
+                  new_content = re.sub(r'Challenge.VERSION = \"\d+\.\d+\.\d+\"', new_version, content)
+                  with open(file_path, 'w') as file:
+                      file.write(new_content)
+                  print(f'Updated {file_path} to {new_version}')
+              else:
+                  print(f'No version found in {file_path}')
+          
+          if __name__ == '__main__':
+              if len(sys.argv) != 2:
+                  print('Usage: python update_version.py <file_path>')
+              else:
+                  update_version(sys.argv[1])" > update_version.py
+           """
