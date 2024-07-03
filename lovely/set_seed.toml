@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = """self.GAME.pseudorandom.seed = args.seed or (not (G.SETTINGS.tutorial_complete or G.SETTINGS.tutorial_progress.completed_parts['big_blind']) and "TUTORIAL") or generate_starting_seed()"""
+position = "at"
+payload = """
+self.GAME.pseudorandom.seed = self.GAME.modifiers.set_seed or args.seed or (not (G.SETTINGS.tutorial_complete or G.SETTINGS.tutorial_progress.completed_parts['big_blind']) and "TUTORIAL") or generate_starting_seed()
+"""
+match_indent = true
+overwrite = true

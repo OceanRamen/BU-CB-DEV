@@ -46,4 +46,7 @@ function ChallengeMod.evaluate_daily_modifiers(self, v)
     -- if v.id == "dm_<ID>" then
     --     self.GAME.modifiers.dm_<ID> = true
     -- elseif ...
+    if v.id == "set_seed" then
+        self.GAME.modifiers.set_seed = v.value
+    end
 end

@@ -87,7 +87,7 @@ function ChallengeMod.localizeDailyNames()
     challenge.DATA.name = challenge.NAME
     challenge.DATA.id = "cm_mod_" .. challenge.NAME:gsub("%s+", "_") .. "_1"
     G.localization.misc.challenge_names[challenge.DATA.id] = challenge.DATA.name
-    table.insert(challenge.DATA.rules.custom, { id = "cm_daily_score", value = daily_score })
+    -- table.insert(challenge.DATA.rules.custom, { id = "cm_daily_score", value = daily_score })
     table.insert(challenge.DATA.rules.custom, { id = "cm_daily_date", value = date })
   end
 
