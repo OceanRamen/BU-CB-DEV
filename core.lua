@@ -1,17 +1,22 @@
 ChallengeMod = {}
 ChallengeMod.DAILY = {}
 ChallengeMod.DAILY.DATE = {}
+
+--- Initializes challenges by loading necessary modules.
 function initChallenges()
   local lovely = require("lovely")
   local nativefs = require("nativefs")
   ChallengeMod.PATH = lovely.mod_dir .. "/BU-CB/"
   assert(load(nativefs.read(ChallengeMod.PATH .. "challenge_handler.lua")))()
   assert(load(nativefs.read(ChallengeMod.PATH .. "mechanics.lua")))()
+  assert(load(nativefs.read(ChallengeMod.PATH .. "Daily/daily_handler.lua")))()
+  assert(load(nativefs.read(ChallengeMod.PATH .. "Daily/daily_mechanics.lua")))()
 end
 
 ChallengeMod.RELEASE = false
 ChallengeMod.VERSION = "BU-CB-" .. "1.0.0" .. "-" .. (ChallengeMod.RELEASE and "FULL" or "DEV")
 
+--- Draws the challenge mod version on the screen.
 function ChallengeMod.draw()
   if not ChallengeMod.RELEASE then
     love.graphics.push()
@@ -23,14 +28,17 @@ end
 
 ChallengeMod.DAILY.DATE.elapsedTime = 0
 
+--- Gets the current date in the format YYYYMMDD.
+-- @return The current date as a string.
 function ChallengeMod.DAILY.DATE.get_current_date()
   local date = os.date("!*t")
-  local dateString = string.format("%04d%02d%02d", date.year, date.month, date.day)
-  return dateString
+  return string.format("%04d%02d%02d", date.year, date.month, date.day)
 end
 
 ChallengeMod.DAILY.DATE.current_date = ChallengeMod.DAILY.DATE.get_current_date()
 
+--- Updates the challenge mod, including updating the date and writing scores.
+-- @param dt The delta time since the last update.
 function ChallengeMod.update(dt)
   local tperiod = 15
   ChallengeMod.DAILY.DATE.elapsedTime = ChallengeMod.DAILY.DATE.elapsedTime + dt
@@ -39,28 +47,28 @@ function ChallengeMod.update(dt)
     ChallengeMod.DAILY.DATE.current_date = current_date
     ChallengeMod.DAILY.DATE.elapsedTime = ChallengeMod.DAILY.DATE.elapsedTime - tperiod
     ChallengeMod.DAILY.write_score(400, current_date)
-    -- print(ChallengeMod.DAILY.get_score(current_date))
     ChallengeMod.DAILY.update_challenge_text()
-    
   end
 end
 
-
 ChallengeMod.Helper = {}
 
+--- Inspects a table up to a certain depth to avoid deep nesting.
+-- @param table The table to inspect.
+-- @param indent The current indentation level.
+-- @param depth The current depth level.
+-- @return A string representation of the table.
 function ChallengeMod.Helper.inspectDepth(table, indent, depth)
-  if depth and depth > 5 then -- Limit the depth to avoid deep nesting
+  if depth and depth > 5 then
     return "Depth limit reached"
   end
 
-  if type(table) ~= "table" then -- Ensure the object is a table
+  if type(table) ~= "table" then
     return "Not a table"
   end
 
   local str = ""
-  if not indent then
-    indent = 0
-  end
+  indent = indent or 0
 
   for k, v in pairs(table) do
     local formatting = string.rep("  ", indent) .. tostring(k) .. ": "
@@ -79,6 +87,9 @@ function ChallengeMod.Helper.inspectDepth(table, indent, depth)
   return str
 end
 
+--- Inspects a table and returns its string representation.
+-- @param table The table to inspect.
+-- @return A string representation of the table.
 function ChallengeMod.Helper.inspect(table)
   if type(table) ~= "table" then
     return "Not a table"
@@ -93,6 +104,9 @@ function ChallengeMod.Helper.inspect(table)
   return str
 end
 
+--- Generates the challenge list page UI.
+-- @param _page The page number to display.
+-- @return The UI structure for the challenge list page.
 function G.UIDEF.challenge_list_page(_page)
   local snapped = false
   local challenge_list = {}
@@ -106,7 +120,8 @@ function G.UIDEF.challenge_list_page(_page)
         and (G.PROFILES[G.SETTINGS.profile].challenges_unlocked >= k)
       local challenge_custom = false
       local challenge_daily = false
-      if string.find(v.id, "daily_challenge") then
+
+      if string.find(v.id, "Daily_Challenge") then
         challenge_daily = true
       end
 
@@ -130,7 +145,10 @@ function G.UIDEF.challenge_list_page(_page)
             col = true,
             label = { challenge_unlocked and localize(v.id, "challenge_names") or localize("k_locked") },
             button = challenge_unlocked and "change_challenge_description" or "nil",
-            colour = challenge_daily and G.C.GOLD or challenge_custom and G.C.GREEN or challenge_unlocked and G.C.RED or G.C.GREY,
+            colour = challenge_daily and G.C.GREEN
+              or challenge_custom and G.C.BLUE
+              or challenge_unlocked and G.C.RED
+              or G.C.GREY,
             minw = 4,
             scale = 0.4,
             minh = 0.6,
@@ -151,14 +169,12 @@ function G.UIDEF.challenge_list_page(_page)
                 },
                 nodes = {
                   challenge_completed
-                      and { n = G.UIT.O, config = { object = Sprite(
-                        0,
-                        0,
-                        0.4,
-                        0.4,
-                        G.ASSET_ATLAS["icons"],
-                        { x = 1, y = 0 }
-                      ) } }
+                      and {
+                        n = G.UIT.O,
+                        config = {
+                          object = Sprite(0, 0, 0.4, 0.4, G.ASSET_ATLAS["icons"], { x = 1, y = 0 }),
+                        },
+                      }
                     or nil,
                 },
               },

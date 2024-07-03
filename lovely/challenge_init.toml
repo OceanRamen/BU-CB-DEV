@@ -31,6 +31,7 @@ pattern = "function init_localization()"
 position = "after"
 payload = '''
 ChallengeMod.localizeChalNames()
+ChallengeMod.localizeDailyNames()
 ChallengeMod.localizeMechDescriptions()
 '''
 match_indent = true
@@ -43,6 +44,7 @@ pattern = "if v.id == 'no_reward' then"
 position = "before"
 payload = """
 ChallengeMod.evaluate_rules(self, v)
+ChallengeMod.evaluate_daily_modifiers(self, v)
 """
 match_indent = true
 overwrite = false

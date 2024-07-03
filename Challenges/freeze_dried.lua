@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Freeze Dried"
 Challenge.DESIGNER = "s_millie"
 Challenge.DATE_CREATED = 240627 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.1.0"
 Challenge.DATA = {
   rules = {
     custom = {
@@ -180,7 +180,6 @@ local joker_names = {
     "j_campfire",
     "j_stuntman",
     "j_invisible",
-    "j_brainstorm",
     "j_satellite",
     "j_shoot_the_moon",
     "j_drivers_license",

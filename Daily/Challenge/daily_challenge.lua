@@ -8,7 +8,7 @@ dailyModifiers = {
     {name = "Saving Spree", desc = "At the end of an Ante, Earn an extra {c:money}$2{} per hand for each hand not played in the previous Ante"},
     {name = "Blinding Speed", desc = "Small and Big Blinds must be completed within a limited number of hands"},
     {name = "All in", desc = "Start with {c:attention}3{} extra Joker slots, but lose {c:money}$2{} for each hand played"},
-    {name = "All money earned from defeating blinds is {c:attention}doubled{}, {c:attention}-1 hand size"},
+    {name = "", desc = "All money earned from defeating blinds is {c:attention}doubled{}, {c:attention}-1 hand size"},
     {name = "Tag Frenzy", desc = "Skipping Small and Big Blinds grants {c:attention}2{} tags instead of 1"},
     {name = "Second Wind", desc = "Start with {c:attention}Mr Bones{}, and earn {c:money}$20{} if he saves you"},
     {name = "Cash Flow", desc = "Every {c:money}$10{} you have {c:attention} decreases your maximum discards by {c:attention}1{}, but you start with {c:attention}5{} discards"},
