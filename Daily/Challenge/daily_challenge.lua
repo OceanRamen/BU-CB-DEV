@@ -29,6 +29,16 @@ function getRandomElement(list)
   return list[math.random(#list)]
 end
 
+local decks = {"Red Deck", "Blue Deck", "Yellow Deck", "Green Deck", "Black Deck", "Magic Deck", "Nebula Deck", "Ghost Deck", "Abandoned Deck", "Checkered Deck", "Zodiac Deck", "Painted Deck", "Anaglyph Deck", "Plasma Deck", "Erratic Deck", "Challenge Deck"}
+
+local daily_deck = getRandomElement(decks)
+
+-- Fixes case where deck and modifier giving overstock would not combine
+buy_one_get_one_free_overstock = "v_overstock_norm"
+if daily_deck == "Zodiac Deck" then
+    buy_one_get_one_free_overstock = "v_overstock_plus"
+end
+
 local daily_modifiers = {
     -- {
     --     NAME = "PLACEHOLDER",
@@ -48,6 +58,27 @@ local daily_modifiers = {
     --         },
     --     }
     -- },
+    {
+        NAME = "Buy One Get One Free",
+        DESCRIPTION = "Start with {c:voucher}Overstock{} and {c:voucher}Clearance Sale{}",
+        DATA = {
+            rules = {
+                custom = {},
+                modifiers = {},
+            },
+            jokers = {},
+            consumeables = {},
+            vouchers = {
+                {id = buy_one_get_one_free_overstock},
+                {id = "v_clearance_sale"},
+            },
+            restrictions = {
+                banned_cards = {},
+                banned_tags = {},
+                banned_other = {},
+            },
+        }
+    }
 }
 
 --- Merges the DATA fields of two tables.

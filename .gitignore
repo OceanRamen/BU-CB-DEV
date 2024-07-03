@@ -1,4 +1,4 @@
 .luarc.json
 Challenges/test_challenge.lua
 Challenges/hiker.lua
-Daily/Challenge/daily_challenge_depr.lua
+Daily/daily_challenge_depr.lua
