@@ -9,14 +9,15 @@ target = "functions/state_events.lua"
 pattern = "G.GAME.current_round.used_packs = {}"
 position = "after"
 payload = """
-local changed_pos = false
-local changed_neg = false
-if G.GAME.modifiers.dm_ante_handsize_change and G.GAME.round_resets.ante <= G.GAME.modifiers.dm_ante_handsize_change and not G.GAME.modifiers.dm_ante_handsize_changed_pos then
+print(G.GAME.modifiers.dm_ante_handsize_change)
+if G.GAME.modifiers.dm_ante_handsize_change then
+if G.GAME.round_resets.ante <= G.GAME.modifiers.dm_ante_handsize_change and not G.GAME.modifiers.dm_ante_handsize_changed_pos then
 G.hand:change_size(3)
 G.GAME.modifiers.dm_ante_handsize_changed_pos = true
-elseif G.GAME.round_resets.ante > G.GAME.modifiers.dm_ante_handsize_change and not G.GAME.modifiers.dm_ante_handsize_changed_neg then
+elseif (G.GAME.round_resets.ante > G.GAME.modifiers.dm_ante_handsize_change) and not G.GAME.modifiers.dm_ante_handsize_changed_neg then
 G.hand:change_size(-3)
 G.GAME.modifiers.dm_ante_handsize_changed_neg = true
+end
 end
 """
 match_indent = true
