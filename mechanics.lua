@@ -28,6 +28,7 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_rand_card_destroy = { "You lose {C:attention}#1#{} cards at the end of every round and on round skip." }
   G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
   G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger." }
+  G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
 end
 
 function ChallengeMod.evaluate_rules(self, v)
@@ -162,6 +163,15 @@ function ChallengeMod.fold()
   G.FILE_HANDLER.force = true
   G.STATE_COMPLETE = false
   G.SETTINGS.paused = false
+end
+
+local blind_debuff_card_ref = Blind.debuff_card
+function Blind:debuff_card(card, from_blind)
+  if G.GAME.modifiers.cm_debuff_cards and card and card.area ~= G.jokers then
+    card:set_debuff(true)
+    return
+  end
+  return blind_debuff_card_ref(self, card, from_blind)
 end
 
 local blind_debuff_hand_ref = Blind.debuff_hand
