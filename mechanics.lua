@@ -29,6 +29,8 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
   G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger." }
   G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
+  G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}." }
+  G.localization.misc.v_text.ch_c_dm_boss_increase = { "Boss Blinds are {C:attention}#1#{} times larger." }
 end
 
 function ChallengeMod.evaluate_rules(self, v)
