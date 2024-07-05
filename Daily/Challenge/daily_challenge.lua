@@ -258,6 +258,70 @@ local daily_modifiers = {
       },
     },
   },
+  {
+    NAME = "Card Shark",
+    DESCRIPTION = "By default, no consumables appear in shops. {c:voucher}Tarot Merchant{} and {c:voucher} Planet Merchant{} restores their respective consumables ability to show up",
+    DATA = {
+      rules = {
+        custom = {
+          { id = 'no_shop_tarots', hidden = true },
+          { id = 'no_shop_planets', hidden = true },
+          { id = 'dm_restock_consumeables', hidden = true },
+        },
+        modifiers = {},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "All In",
+    DESCRIPTION = "Start with {c:attention}3{} extra Joker slots, but lose {c:money}$2{} for each hand played",
+    DATA = {
+      rules = {
+        custom = {
+          { id = "cm_hands_cost", value = 2 },
+        },
+        modifiers = {
+          { id = "joker_slots", value = 8 },
+        },
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Saving Spree",
+    DESCRIPTION = "At the end of an Ante, Earn an extra {c:money}$2{} per hand for each hand not played in the previous Ante",
+    DATA = {
+      rules = {
+        custom = {
+          { id = "dm_last_ante_hand", value = 2 },
+        },
+        modifiers = {},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
 }
 
 -- Define the Daily Challenge object

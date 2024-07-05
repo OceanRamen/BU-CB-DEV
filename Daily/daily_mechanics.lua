@@ -53,7 +53,10 @@ function ChallengeMod.evaluate_daily_modifiers(self, v)
     elseif v.id == "dm_ante_handsize_change" then
       self.GAME.modifiers.dm_ante_handsize_change = v.value
     elseif v.id == "dm_dollars_per_hand" then
-        self.GAME.modifiers.dm_dollars_per_hand = v.value
-        self.GAME.modifiers.money_per_hand = v.value
+      self.GAME.modifiers.dm_dollars_per_hand = v.value
+      self.GAME.modifiers.money_per_hand = v.value
+    elseif v.id == "dm_last_ante_hand" then
+      self.GAME.modifiers.dm_last_ante_hand = v.value
+      self.GAME.modifiers.dm_ante_hand_counter = 0 --count for the # of hands played last ante * v.value
     end
 end

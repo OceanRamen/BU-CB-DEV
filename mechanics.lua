@@ -28,11 +28,14 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_rand_card_destroy = { "You lose {C:attention}#1#{} cards at the end of every round and on round skip." }
   G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round" }
   G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger" }
+  G.localization.misc.v_text.ch_c_cm_hands_cost = { "Playing a hand costs you {C:attention}#1#{} dollars." }
+  G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
   -- Daily Modifiers
   G.localization.misc.v_text.ch_c_dm_dollars_per_hand = {"Start with only 1 discard, but you receive {c:money}#1#{} for each remaining hand"}
-  G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
   G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}" }
   G.localization.misc.v_text.ch_c_dm_boss_increase = { "Boss Blinds are {C:attention}#1#{} times larger" }
+  G.localization.misc.v_text.ch_c_dm_restock_consumeables = { "Buying {C:attention}Tarot Merchant{} or {C:attention}Planet Merchant{} restocks the shop with those cards available." }
+  G.localization.misc.v_text.ch_c_dm_last_ante_hand = { "On ante end, you earn {C:money}$#1#{} for every hand not played in the previous ante." }
 end
 
 function ChallengeMod.evaluate_rules(self, v)
@@ -66,6 +69,8 @@ function ChallengeMod.evaluate_rules(self, v)
     self.GAME.modifiers.cm_draw_deck = true
   elseif v.id == 'cm_all_blind_increase' then
     self.GAME.modifiers.cm_all_blind_increase = v.value
+  elseif v.id == "cm_hands_cost" then
+    self.GAME.modifiers.cm_hands_cost = v.value
   end
 end
 

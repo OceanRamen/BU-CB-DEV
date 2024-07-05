@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "ease_hands_played(-1)"
+position = "after"
+payload = """
+if G.GAME.modifiers.cm_hands_cost then ease_dollars(-G.GAME.modifiers.cm_hands_cost) end
+"""
+match_indent = true
+overwrite = false
