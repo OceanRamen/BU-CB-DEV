@@ -52,9 +52,11 @@ overwrite = false
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
-pattern = """game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value}}}"""
+pattern = "game_rules[#game_rules+1]*v.id*"
 position = "at"
-payload = """game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value, v.name}}}"""
+payload = '''
+if (not v.hidden) then game_rules[#game_rules+1] = {n=G.UIT.R, config={align = "cl"}, nodes= localize{type = 'text', key = 'ch_c_'..v.id, vars = {v.value, v.name}}} end
+'''
 match_indent = true
 overwrite = true
 

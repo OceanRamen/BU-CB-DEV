@@ -53,6 +53,45 @@ end
 
 ChallengeMod.Helper = {}
 
+---
+-- Wraps the input text into multiple lines, ensuring that each line does not exceed the specified maximum width.
+--
+-- @param text The string to be wrapped.
+-- @param font The font object used to measure the width of words.
+-- @param maxWidth The maximum width (in pixels) allowed for each line.
+-- @return A string where the input text is broken into multiple lines, separated by newline characters.
+--
+-- Example usage:
+-- @code
+-- local wrappedText = wrapText("This is an example string that will be broken up into multiple lines based on the maximum width specified.", font, 200)
+-- @endcode
+--
+function ChallengeMod.Helper.wrapText(text, font, maxWidth)
+  local spaceWidth = font:getWidth(" ")
+  local lines = {}
+  local line = {}
+  local lineWidth = 0
+
+  for word in text:gmatch("%S+") do
+    local wordWidth = font:getWidth(word)
+
+    if lineWidth + wordWidth + spaceWidth <= maxWidth then
+      table.insert(line, word)
+      lineWidth = lineWidth + wordWidth + spaceWidth
+    else
+      table.insert(lines, table.concat(line, " "))
+      line = { word }
+      lineWidth = wordWidth + spaceWidth
+    end
+  end
+
+  if #line > 0 then
+    table.insert(lines, table.concat(line, " "))
+  end
+
+  return table.concat(lines, "\n")
+end
+
 --- Inspects a table up to a certain depth to avoid deep nesting.
 -- @param table The table to inspect.
 -- @param indent The current indentation level.

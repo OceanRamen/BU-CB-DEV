@@ -187,7 +187,7 @@ local daily_modifiers = {
     DESCRIPTION = "All Blinds require {c:chips}25%{} more chips to defeat",
     DATA = {
       rules = {
-        custom = {{id = cm_all_blind_increase, value = 1.25},}, 
+        custom = { { id = "cm_all_blind_increase", value = 1.25, hidden = true } },
         modifiers = {},
       },
       jokers = {},
@@ -205,10 +205,11 @@ local daily_modifiers = {
     DESCRIPTION = "Start with only 1 discard, but you receive {c:money}$3{} for each remaining hand.",
     DATA = {
       rules = {
-        custom = {},
+        custom = {
+            { id = "dm_dollars_per_hand", value = 3, hidden = true},
+        },
         modifiers = {
           { id = "discards", value = 1 },
-          { id = "dollars_per_hand", value = 3 },
         },
       },
       jokers = {},
@@ -226,7 +227,7 @@ local daily_modifiers = {
     DESCRIPTION = "Boss Blinds are {c:attention}2x{} as big",
     DATA = {
       rules = {
-        custom = {{id = "dm_boss_increase", value = 2},},
+        custom = { { id = "dm_boss_increase", value = 2, hidden = true} },
         modifiers = {},
       },
       jokers = {},
@@ -244,8 +245,8 @@ local daily_modifiers = {
     DESCRIPTION = "{c:attention}+1{} Hand Size for the first 3 Antes, then {c:attention}-2 Hand Size",
     DATA = {
       rules = {
-        custom = {{ id = "dm_ante_handsize_change", value = 3},},
-        modifiers = {{ id = "hand_size", value = 6},},
+        custom = { { id = "dm_ante_handsize_change", value = 3, hidden = true } },
+        modifiers = { { id = "hand_size", value = 6 } },
       },
       jokers = {},
       consumeables = {},
@@ -312,5 +313,6 @@ Challenge.DATA.deck = {
   type = daily_deck,
 }
 
+table.insert(Challenge.DATA.rules.custom, 2, {id = "dm_modifier_name", value = dailyMods[1].NAME, name = dailyMods[2].NAME})
 -- Return the finalized Challenge object
 return Challenge

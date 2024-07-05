@@ -20,17 +20,19 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_noshop = { "{C:attention}No Shop" }
   G.localization.misc.v_text.ch_c_cm_hand_kills = { "Lose the game if played hand contains a {C:blue}#1#{}" }
   G.localization.misc.v_text.ch_c_cm_all_facedown = { "All cards except those held in hand are face down" }
-  G.localization.misc.v_text.ch_c_cm_repeat_bosses = { "Bosses may repeat in this challenge." }
+  G.localization.misc.v_text.ch_c_cm_repeat_bosses = { "Bosses may repeat in this challenge" }
   G.localization.misc.v_text.ch_c_cm_soul_luck = { "Your soul feels weird..." }
   G.localization.misc.v_text.ch_c_cm_no_after_hand = { "{C:attention}After hand{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_no_after_round = { "{C:attention}After round{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_no_on_discard = { "{C:attention}On discard{} Joker abilities are disabled" }
   G.localization.misc.v_text.ch_c_cm_rand_card_destroy = { "You lose {C:attention}#1#{} cards at the end of every round and on round skip." }
-  G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round." }
-  G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger." }
+  G.localization.misc.v_text.ch_c_cm_draw_deck = { "Your handsize is set to your deck size at the start of every round" }
+  G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger" }
+  -- Daily Modifiers
+  G.localization.misc.v_text.ch_c_dm_dollars_per_hand = {"Start with only 1 discard, but you receive {c:money}#1#{} for each remaining hand"}
   G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
-  G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}." }
-  G.localization.misc.v_text.ch_c_dm_boss_increase = { "Boss Blinds are {C:attention}#1#{} times larger." }
+  G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}" }
+  G.localization.misc.v_text.ch_c_dm_boss_increase = { "Boss Blinds are {C:attention}#1#{} times larger" }
 end
 
 function ChallengeMod.evaluate_rules(self, v)

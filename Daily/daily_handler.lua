@@ -90,11 +90,14 @@ function ChallengeMod.localizeDailyNames()
     -- table.insert(challenge.DATA.rules.custom, { id = "cm_daily_score", value = daily_score })
     table.insert(challenge.DATA.rules.custom, { id = "cm_daily_date", value = date })
   end
+  
 
   -- Update localization text
-  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {c:attention}#1#{}" }
-  G.localization.misc.v_text.ch_c_cm_daily_score = daily_score and { "Best Score: {c:attention}#1#{}" }
-    or { "Complete the Daily Challenge for your score!" }
+  
+  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {c:pale_green}#1#{}" }
+--   G.localization.misc.v_text.ch_c_cm_daily_score = daily_score and { "Best Score: {c:attention}#1#{}" }
+--     or { "Complete the Daily Challenge for your score!" }
+  G.localization.misc.v_text.ch_c_dm_modifier_name = { "Daily Modifiers: {C:attention}#1#{} & {C:attention}#2#{}" }
 end
 
 for _, challenge in ipairs(DailyChallenges) do
