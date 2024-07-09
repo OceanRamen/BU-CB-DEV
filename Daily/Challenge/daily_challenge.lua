@@ -143,27 +143,27 @@ end
 
 -- Daily modifiers configuration
 local daily_modifiers = {
---   {
---     NAME = "PLACEHOLDER",
---     DESCRIPTION = "PLACEHOLDER",
---     DATA = {
---       rules = {
---         custom = {},
---         modifiers = {},
---       },
---       jokers = {},
---       consumeables = {},
---       vouchers = {},
---       restrictions = {
---         banned_cards = {},
---         banned_tags = {},
---         banned_other = {},
---       },
---     },
---   },
+  -- {
+  --   NAME = "PLACEHOLDER",
+  --   DESCRIPTION = "PLACEHOLDER",
+  --   DATA = {
+  --     rules = {
+  --       custom = {},
+  --       modifiers = {},
+  --     },
+  --     jokers = {},
+  --     consumeables = {},
+  --     vouchers = {},
+  --     restrictions = {
+  --       banned_cards = {},
+  --       banned_tags = {},
+  --       banned_other = {},
+  --     },
+  --   },
+  -- },
   {
     NAME = "Buy One Get One Free",
-    DESCRIPTION = "Start with {c:voucher}Overstock{} and {c:voucher}Clearance Sale{}",
+    DESCRIPTION = "Start with {C:voucher}Overstock{} and {C:voucher}Clearance Sale{}",
     DATA = {
       rules = {
         custom = {},
@@ -184,7 +184,7 @@ local daily_modifiers = {
   },
   {
     NAME = "High Stakes",
-    DESCRIPTION = "All Blinds require {c:chips}25%{} more chips to defeat",
+    DESCRIPTION = "All Blinds require {C:chips}25%{} more chips to defeat",
     DATA = {
       rules = {
         custom = { { id = "cm_all_blind_increase", value = 1.25, hidden = true } },
@@ -202,7 +202,7 @@ local daily_modifiers = {
   },
   {
     NAME = "Short Stack",
-    DESCRIPTION = "Start with only 1 discard, but you receive {c:money}$3{} for each remaining hand.",
+    DESCRIPTION = "Start with only 1 discard, but you receive {C:money}$3{} for each remaining hand.",
     DATA = {
       rules = {
         custom = {
@@ -224,7 +224,7 @@ local daily_modifiers = {
   },
   {
     NAME = "Big Boss",
-    DESCRIPTION = "Boss Blinds are {c:attention}2x{} as big",
+    DESCRIPTION = "Boss Blinds are {C:attention}2x{} as big",
     DATA = {
       rules = {
         custom = { { id = "dm_boss_increase", value = 2, hidden = true} },
@@ -242,7 +242,7 @@ local daily_modifiers = {
   },
   {
     NAME = "Early Bird",
-    DESCRIPTION = "{c:attention}+1{} Hand Size for the first 3 Antes, then {c:attention}-2 Hand Size",
+    DESCRIPTION = "{C:attention}+1{} Hand Size for the first 3 Antes, then {C:attention}-2 Hand Size",
     DATA = {
       rules = {
         custom = { { id = "dm_ante_handsize_change", value = 3, hidden = true } },
@@ -260,7 +260,7 @@ local daily_modifiers = {
   },
   {
     NAME = "Card Shark",
-    DESCRIPTION = "By default, no consumables appear in shops. {c:voucher}Tarot Merchant{} and {c:voucher} Planet Merchant{} restores their respective consumables ability to show up",
+    DESCRIPTION = "By default, no consumables appear in shops. {C:voucher}Tarot Merchant{} and {C:voucher} Planet Merchant{} restores their respective consumables ability to show up",
     DATA = {
       rules = {
         custom = {
@@ -282,7 +282,7 @@ local daily_modifiers = {
   },
   {
     NAME = "All In",
-    DESCRIPTION = "Start with {c:attention}3{} extra Joker slots, but lose {c:money}$2{} for each hand played",
+    DESCRIPTION = "Start with {C:attention}3{} extra Joker slots, but lose {C:money}$2{} for each hand played",
     DATA = {
       rules = {
         custom = {
@@ -304,7 +304,7 @@ local daily_modifiers = {
   },
   {
     NAME = "Saving Spree",
-    DESCRIPTION = "At the end of an Ante, Earn an extra {c:money}$2{} per hand for each hand not played in the previous Ante",
+    DESCRIPTION = "At the end of an Ante, Earn an extra {C:money}$2{} per hand for each hand not played in the previous Ante",
     DATA = {
       rules = {
         custom = {
@@ -313,6 +313,46 @@ local daily_modifiers = {
         modifiers = {},
       },
       jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Tag Frenzy",
+    DESCRIPTION = "Skipping Blinds grants {C:attention}2{} tags instead of 1",
+    DATA = {
+      rules = {
+        custom = {
+          { id = "dm_double_tag" },
+        },
+        modifiers = {},
+      },
+      jokers = {},
+      consumeables = {},
+      vouchers = {},
+      restrictions = {
+        banned_cards = {},
+        banned_tags = {},
+        banned_other = {},
+      },
+    },
+  },
+  {
+    NAME = "Second Wind",
+    DESCRIPTION = "Start with {C:attention}Mr Bones{}, and earn {C:money}$20{} if he saves you.",
+    DATA = {
+      rules = {
+        custom = {
+          { id = "dm_baller_bones", value = 20 },
+        },
+        modifiers = {},
+      },
+      jokers = {{id = 'j_mr_bones'},},
       consumeables = {},
       vouchers = {},
       restrictions = {

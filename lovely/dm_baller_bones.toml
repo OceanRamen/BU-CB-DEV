@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.GAME.chips/G.GAME.blind.chips >= 0.25 then"
+position = "after"
+payload = "if G.GAME.modifiers.dm_baller_bones then ease_dollars(G.GAME.modifiers.dm_baller_bones) end"
+match_indent = true
+overwrite = false

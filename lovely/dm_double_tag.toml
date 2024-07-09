@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "add_tag(_tag.config.ref_table)"
+position = "before"
+payload = """if G.GAME.modifiers.dm_double_tag then
+add_tag(Tag('tag_double'))
+play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+end"""
+match_indent = true
+overwrite = false
