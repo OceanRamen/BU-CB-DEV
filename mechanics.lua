@@ -71,6 +71,32 @@ function ChallengeMod.evaluate_rules(self, v)
     self.GAME.modifiers.cm_all_blind_increase = v.value
   elseif v.id == "cm_hands_cost" then
     self.GAME.modifiers.cm_hands_cost = v.value
+  elseif v.id == "cm_random_deck" then
+    self.GAME.modifiers.cm_random_deck = true
+    local decks = {
+      "Red Deck",
+      "Blue Deck",
+      "Yellow Deck",
+      "Green Deck",
+      "Black Deck",
+      "Magic Deck",
+      "Nebula Deck",
+      "Ghost Deck",
+      "Abandoned Deck",
+      "Checkered Deck",
+      "Zodiac Deck",
+      "Painted Deck",
+      "Anaglyph Deck",
+      "Plasma Deck",
+      "Erratic Deck",
+      "Challenge Deck",
+    }
+    local rand = math.random(#decks)
+    local selected_back = decks[rand]
+    selected_back = get_deck_from_name(selected_back)
+    self.GAME.selected_back = Back(selected_back)
+    self.GAME.selected_back_key = selected_back
+    self.GAME.selected_back:apply_to_run()
   end
 end
 

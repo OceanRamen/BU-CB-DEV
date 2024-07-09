@@ -94,7 +94,7 @@ function ChallengeMod.localizeDailyNames()
 
   -- Update localization text
   
-  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {c:pale_green}#1#{}" }
+  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {C:pale_green}#1#{}" }
 --   G.localization.misc.v_text.ch_c_cm_daily_score = daily_score and { "Best Score: {c:attention}#1#{}" }
 --     or { "Complete the Daily Challenge for your score!" }
   G.localization.misc.v_text.ch_c_dm_modifier_name = { "Daily Modifiers: {C:attention}#1#{} & {C:attention}#2#{}" }

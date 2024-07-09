@@ -143,24 +143,24 @@ end
 
 -- Daily modifiers configuration
 local daily_modifiers = {
-  {
-    NAME = "PLACEHOLDER",
-    DESCRIPTION = "PLACEHOLDER",
-    DATA = {
-      rules = {
-        custom = {},
-        modifiers = {},
-      },
-      jokers = {},
-      consumeables = {},
-      vouchers = {},
-      restrictions = {
-        banned_cards = {},
-        banned_tags = {},
-        banned_other = {},
-      },
-    },
-  },
+--   {
+--     NAME = "PLACEHOLDER",
+--     DESCRIPTION = "PLACEHOLDER",
+--     DATA = {
+--       rules = {
+--         custom = {},
+--         modifiers = {},
+--       },
+--       jokers = {},
+--       consumeables = {},
+--       vouchers = {},
+--       restrictions = {
+--         banned_cards = {},
+--         banned_tags = {},
+--         banned_other = {},
+--       },
+--     },
+--   },
   {
     NAME = "Buy One Get One Free",
     DESCRIPTION = "Start with {c:voucher}Overstock{} and {c:voucher}Clearance Sale{}",
