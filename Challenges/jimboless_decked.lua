@@ -45,7 +45,6 @@ Challenge.DATA = {
         banned_other = {
             {id = 'bl_final_acorn', type = 'blind'},
             {id = 'bl_final_heart', type = 'blind'},
-            {id = 'bl_final_leaf', type = 'blind'}
         }
     }
 }

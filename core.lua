@@ -11,6 +11,8 @@ function initChallenges()
   assert(load(nativefs.read(ChallengeMod.PATH .. "mechanics.lua")))()
   assert(load(nativefs.read(ChallengeMod.PATH .. "Daily/daily_handler.lua")))()
   assert(load(nativefs.read(ChallengeMod.PATH .. "Daily/daily_mechanics.lua")))()
+
+  -- G.F_DAILIES = true
 end
 
 ChallengeMod.RELEASE = false
@@ -143,9 +145,9 @@ function ChallengeMod.Helper.inspect(table)
   return str
 end
 
---- Generates the challenge list page UI.
--- @param _page The page number to display.
--- @return The UI structure for the challenge list page.
+-- --- Generates the challenge list page UI.
+-- -- @param _page The page number to display.
+-- -- @return The UI structure for the challenge list page.
 function G.UIDEF.challenge_list_page(_page)
   local snapped = false
   local challenge_list = {}

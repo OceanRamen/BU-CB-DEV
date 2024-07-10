@@ -286,7 +286,7 @@ local daily_modifiers = {
     DATA = {
       rules = {
         custom = {
-          { id = "cm_hands_cost", value = 2 },
+          { id = "cm_hands_cost", value = 2, hidden = true},
         },
         modifiers = {
           { id = "joker_slots", value = 8 },
@@ -308,7 +308,7 @@ local daily_modifiers = {
     DATA = {
       rules = {
         custom = {
-          { id = "dm_last_ante_hand", value = 2 },
+          { id = "dm_last_ante_hand", value = 2, hidden = true},
         },
         modifiers = {},
       },
@@ -353,10 +353,10 @@ local Challenge = {
 local dailyMods = getDailyModifiers(daily_modifiers, 2)
 
 -- Print the selected daily modifiers for inspection
-print("Selected Daily Modifiers:")
-for _, mod in ipairs(dailyMods) do
-  print(mod.NAME)
-end
+-- print("Selected Daily Modifiers:")
+-- for _, mod in ipairs(dailyMods) do
+--   print(mod.NAME)
+-- end
 
 -- Merge the DATA fields of the two selected modifiers into Challenge DATA
 local mergedMods = mergeDataFields(dailyMods[1].DATA, dailyMods[2].DATA)

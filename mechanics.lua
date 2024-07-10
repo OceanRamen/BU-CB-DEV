@@ -30,6 +30,7 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger" }
   G.localization.misc.v_text.ch_c_cm_hands_cost = { "Playing a hand costs you {C:attention}#1#{} dollars." }
   G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
+  G.localization.misc.v_text.ch_c_cm_random_deck = { "Played on a {C:attention}Random{} deck" }
   -- Daily Modifiers
   G.localization.misc.v_text.ch_c_dm_dollars_per_hand = {"Start with only 1 discard, but you receive {c:money}#1#{} for each remaining hand"}
   G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}" }

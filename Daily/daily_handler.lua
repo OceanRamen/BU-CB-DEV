@@ -77,6 +77,10 @@ function ChallengeMod.DAILY.update_challenge_text()
   end
 end
 
+for _, challenge in ipairs(DailyChallenges) do
+  table.insert(challenge.DATA.rules.custom, { id = "cm_daily_date", value = "PLACEHOLDER" })
+end
+
 --- Localizes the challenge names and updates their data.
 function ChallengeMod.localizeDailyNames()
   local date = ChallengeMod.DAILY.DATE.get_current_date()
@@ -87,16 +91,11 @@ function ChallengeMod.localizeDailyNames()
     challenge.DATA.name = challenge.NAME
     challenge.DATA.id = "cm_mod_" .. challenge.NAME:gsub("%s+", "_") .. "_1"
     G.localization.misc.challenge_names[challenge.DATA.id] = challenge.DATA.name
-    -- table.insert(challenge.DATA.rules.custom, { id = "cm_daily_score", value = daily_score })
-    table.insert(challenge.DATA.rules.custom, { id = "cm_daily_date", value = date })
+    --- Update current date on lang reload
   end
   
-
-  -- Update localization text
-  
-  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {C:pale_green}#1#{}" }
---   G.localization.misc.v_text.ch_c_cm_daily_score = daily_score and { "Best Score: {c:attention}#1#{}" }
---     or { "Complete the Daily Challenge for your score!" }
+  --- Set localization text
+  G.localization.misc.v_text.ch_c_cm_daily_date = { "Daily Challenge: {C:pale_green}"..date.."{}" }
   G.localization.misc.v_text.ch_c_dm_modifier_name = { "Daily Modifiers: {C:attention}#1#{} & {C:attention}#2#{}" }
 end
 

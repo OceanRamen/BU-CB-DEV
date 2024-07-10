@@ -19,10 +19,11 @@ local chal_directory = ChallengeMod.PATH .. "Challenges/"
 local chal_lua_files = get_chal_files(chal_directory)
 local CustomChallenges = {}
 
--- Load custom challenges
+--- Load custom challenges
 for _, file in ipairs(chal_lua_files) do
   local file_path = chal_directory .. "/" .. file
   local challenge = dofile(file_path)
+  --- Inset into customChallenges table
   table.insert(CustomChallenges, challenge)
 end
 
@@ -31,14 +32,17 @@ table.sort(CustomChallenges, function(a, b)
   return a.DATE_CREATED < b.DATE_CREATED
 end)
 
+for _, challenge in ipairs(CustomChallenges) do 
+  --- Add important challenge data
+  challenge.DATA.name = challenge.NAME
+  challenge.DATA.id = "cm_mod_" .. challenge.NAME:gsub("%s+", "_") .. "_1"
+  table.insert(challenge.DATA.rules.custom, { id = "cm_credit", value = challenge.DESIGNER })
+  table.insert(challenge.DATA.rules.custom, { id = "cm_VERSION", value = challenge.VERSION })
+end
+
 --- Localizes the challenge names and updates their data.
 function ChallengeMod.localizeChalNames()
-  -- Localize custom challenges
   for _, challenge in ipairs(CustomChallenges) do
-    challenge.DATA.name = challenge.NAME
-    challenge.DATA.id = "cm_mod_" .. challenge.NAME:gsub("%s+", "_") .. "_1"
-    table.insert(challenge.DATA.rules.custom, { id = "cm_credit", value = challenge.DESIGNER })
-    table.insert(challenge.DATA.rules.custom, { id = "cm_VERSION", value = challenge.VERSION })
     G.localization.misc.challenge_names[challenge.DATA.id] = challenge.DATA.name
   end
 
@@ -46,6 +50,7 @@ function ChallengeMod.localizeChalNames()
   if not ChallengeMod.RELEASE then
     G.localization.misc.v_text.ch_c_cm_VERSION = { "{C:purple}VERSION: #1#{}" }
   end
+  
   G.localization.misc.v_text.ch_c_cm_credit = { "Designed by: {C:green}#1#{}" }
 end
 
