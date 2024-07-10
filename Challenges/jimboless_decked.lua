@@ -2,7 +2,7 @@ local Challenge = {}
 Challenge.NAME = "Jimbo Decked"
 Challenge.DESIGNER = "Djynasty"
 Challenge.DATE_CREATED = 240705 -- Y/M/D
-Challenge.VERSION = "1.0.0"
+Challenge.VERSION = "1.0.4"
 Challenge.DATA = {
     rules = {
         custom = {
@@ -25,9 +25,8 @@ Challenge.DATA = {
     restrictions = {
         banned_cards = {
             {id = 'c_judgement'},
-            {id = 'c_wraith'},
-            {id = 'c_soul'},
-            {id = 'v_antimatter'},
+            {id = 'c_wheel_of_fortune'},
+            {id = 'c_temperance'},
             {id = 'p_buffoon_normal_1', ids = {
                 'p_buffoon_normal_1','p_buffoon_normal_2','p_buffoon_jumbo_1','p_buffoon_mega_1',
             }},
