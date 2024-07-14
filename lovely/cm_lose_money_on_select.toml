@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "card:highlight(true)"
+position = "after"
+payload = '''
+    if G.GAME and G.GAME.modifiers.cm_lose_money_on_select then
+        ease_dollars(-1, true)
+    end
+'''
+match_indent = true
+overwrite = false
