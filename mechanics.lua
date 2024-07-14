@@ -30,6 +30,11 @@ function ChallengeMod.localizeMechDescriptions()
   G.localization.misc.v_text.ch_c_cm_all_blind_increase = { "Blinds are all {C:attention}#1#{} times larger" }
   G.localization.misc.v_text.ch_c_cm_hands_cost = { "Playing a hand costs you {C:attention}#1#{} dollars." }
   G.localization.misc.v_text.ch_c_cm_debuff_cards = { "All playing cards are {C:attention}debuffed{}" }
+  G.localization.misc.v_text.ch_c_cm_expelled_1 = {'Bans all {C:attention}Jokers, {C:tarot}Tarots, {C:spectral}Spectrals,'}
+  G.localization.misc.v_text.ch_c_cm_expelled_2 = {'{C:planet}Planets{} and {C:attention}Tags{} placed in the'}
+  G.localization.misc.v_text.ch_c_cm_expelled_3 = {'top two tiers of BU\'s tier lists'}
+  G.localization.misc.v_text.ch_c_cm_omit_digits = {'Omits all numerical {C:attention}digits'}
+  G.localization.misc.v_text.ch_c_cm_lose_money_on_select = {'Lose {C:money}$1{} whenever a card is selected'}
   -- Daily Modifiers
   G.localization.misc.v_text.ch_c_dm_dollars_per_hand = {"Start with only 1 discard, but you receive {c:money}#1#{} for each remaining hand"}
   G.localization.misc.v_text.ch_c_dm_ante_handsize_change = { "Handsize is {C:attention}+3{} for the first {C:blue}#1#{} antes, then {C:attention}-1{}" }
